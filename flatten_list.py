@@ -1,32 +1,24 @@
-##a = [[1,2,[3,4]],[5,6],7]
-##h = []
-##for i in a:
-##    if type(i) is list:
-##        for k in i:
-##            if type(k) is list:
-##                
-##                h.extend(k)
-##            else:
-##                h.append(k)
-##    else:
-##         h.append(i)
-##
-##print(h)        
+#a = [1,23,4,[3,31,2,[123,123,[99,44,[3,[2],[]]]]]]
+a= [1,23,4,[3,31,2,[123,123,[99,44,[3,[20],[2,[[3,[[[[2]]],[484,[]],[[[]]]]]]],[1092]]]]]]
+c = []
+print('original list : ',a)
 
-
-ls = [[1,2,[2,3,[3,5,[2,4,[4,6]]]]],4,[4,5,[5,6]]]
-flatten = []
-while 1:
-    for i in ls:
-        if type(i) is list:
-            flatten.extend(i)
+def flatlist(a):
+    b = []
+    for i in a:
+        if type(i)!=list:
+            b.append(i)
         else:
-            flatten.append(i)
-    ls = flatten[:]
-    flatten.clear()
-    bd = [type(l) is list for l in ls]
-    if not any(bd):
-        break
-            
-        
-print(ls)
+            b.extend(flatlist(i))
+    return b
+
+# def flatlist2(a):
+#     b=[]
+#     for i in a:
+#         if type(i)!=list:
+#             b.append(i)
+#         else:
+#             flatlist3(i)
+#     return b
+c=flatlist(a)
+print("flatten - \n",c)
